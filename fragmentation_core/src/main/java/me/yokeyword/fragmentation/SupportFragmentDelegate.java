@@ -188,8 +188,12 @@ public class SupportFragmentDelegate {
         outState.putInt(TransactionDelegate.FRAGMENTATION_ARG_CONTAINER, mContainerId);
     }
 
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        getVisibleDelegate().onActivityCreated(savedInstanceState);
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        mSaveInstanceState = savedInstanceState;
+    }
+
+    public void onStart( ) {
+        getVisibleDelegate().onStart();
 
         View view = mFragment.getView();
         if (view != null) {
@@ -199,7 +203,7 @@ public class SupportFragmentDelegate {
         }
 
 
-        if (savedInstanceState != null
+        if (mSaveInstanceState != null
                 || mRootStatus == STATUS_ROOT_ANIM_DISABLE
                 || (mFragment.getTag() != null && mFragment.getTag().startsWith("android:switcher:"))
                 || (mReplaceMode && !mFirstCreateView)) {

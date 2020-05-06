@@ -55,15 +55,21 @@ public class SupportFragment extends Fragment implements ISupportFragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mDelegate.onActivityCreated(savedInstanceState);
-    }
-
-    @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         mDelegate.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        mDelegate.onViewStateRestored(savedInstanceState);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mDelegate.onStart();
     }
 
     @Override
